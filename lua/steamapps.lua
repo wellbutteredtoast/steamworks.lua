@@ -16,20 +16,20 @@ local steamapps = {}
 local ffi = require("ffi")
 
 ffi.cdef[[
-    bool sl_get_dlc_data_by_index(int i_dlc, unsigned int* app_id, bool* available);
-    bool sl_is_app_installed(unsigned int app_id);
+    bool sl_GetDLCDataByIndex(int i_dlc, unsigned int* app_id, bool* available);
+    bool sl_IsAppInstalled(unsigned int app_id);
 ]]
 
 local lib = ffi.load("steamlua")
 
-function steamapps.get_dlc_data_by_idx(dlc_index)
+function steamapps.GetDLCDataByIndex(dlc_index)
     -- not yet implemented, error!
-    return nil, "getDLCDataByIndex is not yet implemented."
+    return nil, "GetDLCDataByIndex is not yet implemented."
 end
 
-function steamapps.is_app_installed(app_id)
+function steamapps.IsAppInstalled(app_id)
     local installed = ffi.new("bool[1]")
-    local result = lib.sl_is_app_installed(app_id)
+    local result = lib.sl_IsAppInstalled(app_id)
     return result
 end
 

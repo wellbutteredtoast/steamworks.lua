@@ -17,47 +17,49 @@ local core = {}
 local ffi = require("ffi")
 
 ffi.cdef[[
-    bool sl_init();
-    void sl_shutdown();
-    bool sl_restart_app_if_necessary(unsigned int app_id);
-    void sl_run_callbacks();
-    void sl_set_minidump_comment(const char* comment);
-    void sl_write_minidump(unsigned int except_code, void* except_info, unsigned int build_id);
+    bool sl_Init();
+    void sl_Shutdown();
+    bool sl_RestartAppIfNecessary(unsigned int app_id);
+    void sl_RunCallbacks();
+    void sl_SetMinidumpComment(const char* comment);
+    void sl_WriteMinidump(unsigned int except_code, void* except_info, unsigned int build_id);
+    const int sl_GetABIVersion();
+    const char *sl_GetVersion();
 ]]
 
 local lib = ffi.load("steamlua")
 
 function core.steam_init()
-    return lib.sl_init()
+    return lib.sl_Init()
 end
 
 function core.steam_shutdown()
-    lib.sl_shutdown()
+    lib.sl_Shutdown()
 end
 
-function core.restart_app_if_necessary(app_id)
+function core.RestartAppIfNecessary(app_id)
     if app_id == nil or app_id < 0 then
         print("app_id provided is not valid.")
         return nil
     end
 
-    return lib.sl_restart_app_if_necessary(app_id)
+    return lib.sl_RestartAppIfNecessary(app_id)
 end
 
-function core.run_callbacks()
-    lib.sl_run_callbacks()
+function core.RunCallbacks()
+    lib.sl_RunCallbacks()
 end
 
-function core.set_minidump_comment(comment)
+function core.SetMinidumpComment(comment)
     if comment == nil or type(comment) ~= "string" then
         print("comment provided is not valid.")
         return
     end
 
-    lib.sl_set_minidump_comment(comment)
+    lib.sl_SetMinidumpComment(comment)
 end
 
-function core.write_minidump(except_code, except_info, build_id)
+function core.WriteMinidump(except_code, except_info, build_id)
     if except_code == nil or type(except_code) ~= "number" then
         print("except_code provided is not valid.")
         return
@@ -73,7 +75,7 @@ function core.write_minidump(except_code, except_info, build_id)
         return
     end
 
-    lib.sl_write_minidump(except_code, except_info, build_id)
+    lib.sl_WriteMinidump(except_code, except_info, build_id)
 end
 
 return core
