@@ -29,11 +29,11 @@ ffi.cdef[[
 
 local lib = ffi.load("steamlua")
 
-function core.steam_init()
+function core.SteamInit()
     return lib.sl_Init()
 end
 
-function core.steam_shutdown()
+function core.SteamShutdown()
     lib.sl_Shutdown()
 end
 
@@ -76,6 +76,14 @@ function core.WriteMinidump(except_code, except_info, build_id)
     end
 
     lib.sl_WriteMinidump(except_code, except_info, build_id)
+end
+
+function core.GetABIVersion()
+    return lib.sl_GetABIVersion()
+end
+
+function core.GetVersion()
+    return lib.sl_GetVersion()
 end
 
 return core
