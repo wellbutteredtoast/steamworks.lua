@@ -27,7 +27,7 @@ end
 
 function achievement.ResetAllStats(achievements_too)
     if type(achievements_too) ~= "boolean" then
-        print("Expected boolean, got " .. type(achievements_too) .. "(reset_all_stats)")
+        print("Expected boolean, got " .. type(achievements_too))
         return nil
     end
 

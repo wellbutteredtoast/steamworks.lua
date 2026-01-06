@@ -53,7 +53,7 @@ end
 function core.SetMinidumpComment(comment)
     if comment == nil or type(comment) ~= "string" then
         print("comment provided is not valid.")
-        return
+        return nil
     end
 
     lib.sl_SetMinidumpComment(comment)
