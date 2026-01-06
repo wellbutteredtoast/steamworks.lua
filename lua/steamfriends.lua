@@ -14,15 +14,15 @@ local friends = {}
 local ffi = require("ffi")
 
 ffi.cdef[[
-    void sl_ActivateGameOverlay(const char *dialog)
-    void sl_ActivateGameOverlayInviteDialog()
-    void sl_ActivateGameOverlayToStore(unsigned int app_id, unsigned int overlay_flag)
-    void sl_ActivateGameOverlayToUser(const char *dialog, unsigned long long steam_id)
-    void sl_ActivateGameOverlayToWebPage(const char *url)
-    void sl_ClearRichPresence()
-    bool sl_CloseClanChatWindowInSteam(unsigned long long steam_id_clan_chat)
-    int sl_GetClanCount()
-    int sl_GetCoplayFriendCount()
+    void sl_ActivateGameOverlay(const char *dialog);
+    void sl_ActivateGameOverlayInviteDialog();
+    void sl_ActivateGameOverlayToStore(unsigned int app_id, unsigned int overlay_flag);
+    void sl_ActivateGameOverlayToUser(const char *dialog, unsigned long long steam_id);
+    void sl_ActivateGameOverlayToWebPage(const char *url);
+    void sl_ClearRichPresence();
+    bool sl_CloseClanChatWindowInSteam(unsigned long long steam_id_clan_chat);
+    int sl_GetClanCount();
+    int sl_GetCoplayFriendCount();
 ]]
 
 local lib = ffi.load("steamlua")
