@@ -19,8 +19,10 @@ ffi.cdef[[
     bool sl_reset_all_stats(bool achievements_too);
 ]]
 
+local lib = ffi.load("steamlua")
+
 function achievement.request_current_stats()
-    return ffi.C.sl_request_current_stats()
+    return lib.sl_request_current_stats()
 end
 
 function achievement.reset_all_stats(achievements_too)
@@ -29,7 +31,7 @@ function achievement.reset_all_stats(achievements_too)
         return nil
     end
 
-    return ffi.C.sl_reset_all_stats(achievements_too)
+    return lib.sl_reset_all_stats(achievements_too)
 end
 
 return achievement

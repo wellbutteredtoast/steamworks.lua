@@ -25,12 +25,14 @@ ffi.cdef[[
     void sl_write_minidump(unsigned int except_code, void* except_info, unsigned int build_id);
 ]]
 
+local lib = ffi.load("steamlua")
+
 function core.steam_init()
-    return ffi.C.sl_init()
+    return lib.sl_init()
 end
 
 function core.steam_shutdown()
-    ffi.C.sl_shutdown()
+    lib.sl_shutdown()
 end
 
 function core.restart_app_if_necessary(app_id)
@@ -39,11 +41,11 @@ function core.restart_app_if_necessary(app_id)
         return nil
     end
 
-    return ffi.C.sl_restart_app_if_necessary(app_id)
+    return lib.sl_restart_app_if_necessary(app_id)
 end
 
 function core.run_callbacks()
-    ffi.C.sl_run_callbacks()
+    lib.sl_run_callbacks()
 end
 
 function core.set_minidump_comment(comment)
@@ -52,7 +54,7 @@ function core.set_minidump_comment(comment)
         return
     end
 
-    ffi.C.sl_set_minidump_comment(comment)
+    lib.sl_set_minidump_comment(comment)
 end
 
 function core.write_minidump(except_code, except_info, build_id)
@@ -71,7 +73,7 @@ function core.write_minidump(except_code, except_info, build_id)
         return
     end
 
-    ffi.C.sl_write_minidump(except_code, except_info, build_id)
+    lib.sl_write_minidump(except_code, except_info, build_id)
 end
 
 return core

@@ -20,6 +20,8 @@ ffi.cdef[[
     bool sl_is_app_installed(unsigned int app_id);
 ]]
 
+local lib = ffi.load("steamlua")
+
 function steamapps.get_dlc_data_by_idx(dlc_index)
     -- not yet implemented, error!
     return nil, "getDLCDataByIndex is not yet implemented."
@@ -27,7 +29,7 @@ end
 
 function steamapps.is_app_installed(app_id)
     local installed = ffi.new("bool[1]")
-    local result = ffi.C.sl_is_app_installed(app_id)
+    local result = lib.sl_is_app_installed(app_id)
     return result
 end
 
