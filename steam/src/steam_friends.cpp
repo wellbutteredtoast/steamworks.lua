@@ -12,6 +12,7 @@ EXPORT void sl_ActivateGameOverlay(const char *dialog) {
 
 EXPORT void sl_ActivateGameOverlayInviteDialog() {
     STUB_RETURN(void, "Not implemented yet! (sl_ActivateGameOverlayInviteDialog)", nullptr);
+}
 
 EXPORT void sl_ActivateGameOverlayToStore() {
     STUB_RETURN(void, "Not implemented yet! (sl_ActivateGameOverlayToStore)", nullptr);

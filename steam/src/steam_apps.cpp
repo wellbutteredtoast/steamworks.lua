@@ -21,7 +21,7 @@ EXPORT bool sl_IsSubscribedApp(unsigned int app_id) {
 }
 
 EXPORT bool sl_IsDLCInstalled(unsigned int app_id) {
-    return SteamApps()->BIsDLCInstalled(app_id);
+    return SteamApps()->BIsDlcInstalled(app_id);
 }
 
 EXPORT bool sl_IsLowViolence() {
@@ -46,8 +46,8 @@ EXPORT bool sl_IsVACBanned() {
 }
 
 // Note: Defaults to 0 if you're not running a build downloaded from steam.
-EXPORT int sl_GetAppBuildID() {
-    return SteamApps()->GetAppBuildID();
+EXPORT int sl_GetAppBuildId() {
+    return SteamApps()->GetAppBuildId();
 }
 
 EXPORT unsigned long long sl_GetAppOwner() {
@@ -62,7 +62,7 @@ EXPORT bool sl_GetCurrentBetaName(char *name, int name_buffer_size) {
     STUB_RETURN(bool, "Not implemented yet! (sl_GetCurrentBetaName)", false);
 }
 
-EXPORT int sl_GetNumBetas(int *available, int *private) {
+EXPORT int sl_GetNumBetas(int *betas_available, int *betas_private) {
     STUB_RETURN(int, "Not implemented yet! (sl_GetNumBetas)", 0);
 }
 

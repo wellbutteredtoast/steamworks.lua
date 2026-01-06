@@ -5,6 +5,7 @@
 
 #include "export.hpp"
 #include "version.hpp"
+#include "stub.hpp"
 #include "steam/steam_api.h"
 #include <iostream>
 
