@@ -10,12 +10,12 @@ extern "C" {
 // The user_id should not change during runtime. That's... really bad.
 static CSteamID user_id = SteamUser()->GetSteamID();
 
-EXPORT bool sl_request_current_stats() {
+EXPORT bool sl_RequestUserStats() {
     return SteamUserStats()->RequestUserStats(user_id);
 }
 
 // Note: achievements_too defaults to false to prevent accidental resets of achievements.
-EXPORT bool sl_reset_all_stats(bool achievements_too=false)  {
+EXPORT bool sl_ResetAllStats(bool achievements_too=false)  {
     return SteamUserStats()->ResetAllStats(achievements_too);
 }
 

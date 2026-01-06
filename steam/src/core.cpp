@@ -4,23 +4,34 @@
 // This doesn't have a header file associated with it.
 
 #include "export.hpp"
+#include "version.hpp"
 #include "steam/steam_api.h"
 #include <iostream>
 
 extern "C" {
 
+// Helper: Get the internal ABI version number
+EXPORT const int sl_GetABIVersion() {
+    return LUASTEAM_ABI_VERSION;
+}
+
+// Helper: Get the human friendly Semantic Version version of the project
+EXPORT const char *sl_GetVersion() {
+    return LUASTEAM_VERSION;
+}
+
 // Initializes the SteamAPI for use.
-EXPORT bool sl_init() {
+EXPORT bool sl_Init() {
     return SteamAPI_Init();
 }
 
 // Shuts down the SteamAPI.
-EXPORT void sl_shutdown() {
+EXPORT void sl_Shutdown() {
     SteamAPI_Shutdown();
 }
 
 // Note: if you use SteamDRM, this function is not needed.
-EXPORT bool sl_restart_app_if_necessary(unsigned int app_id) {
+EXPORT bool sl_RestartAppIfNecessary(unsigned int app_id) {
     return SteamAPI_RestartAppIfNecessary(app_id);
 }
 
@@ -30,13 +41,13 @@ EXPORT void sl_run_callbacks() {
 }
 
 // Sets minidump comment (untested)
-EXPORT void sl_set_minidump_comment(const char* comment) {
+EXPORT void sl_SetMiniDumpComment(const char* comment) {
     std::cout << "This function only works on 32bit Windows.\nThis will not work anywhere else!" << std::endl;
     SteamAPI_SetMiniDumpComment(comment);
 }
 
 // Writes a minidump (untested)
-EXPORT void sl_write_minidump(unsigned int except_code, void* except_info, unsigned int build_id) {
+EXPORT void sl_WriteMiniDump(unsigned int except_code, void* except_info, unsigned int build_id) {
     std::cout << "This function only works on 32bit Windows.\nThis will not work anywhere else!" << std::endl;
     SteamAPI_WriteMiniDump(except_code, except_info, build_id);
 }
