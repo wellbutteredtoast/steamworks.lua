@@ -42,13 +42,13 @@ EXPORT void sl_run_callbacks() {
 
 // Sets minidump comment (untested)
 EXPORT void sl_SetMiniDumpComment(const char* comment) {
-    std::cout << "This function only works on 32bit Windows.\nThis will not work anywhere else!" << std::endl;
+    STUB_WARN("This function only works on x86 (32bit) Windows!");
     SteamAPI_SetMiniDumpComment(comment);
 }
 
 // Writes a minidump (untested)
 EXPORT void sl_WriteMiniDump(unsigned int except_code, void* except_info, unsigned int build_id) {
-    std::cout << "This function only works on 32bit Windows.\nThis will not work anywhere else!" << std::endl;
+    STUB_WARN("This function only works on x86 (32bit) Windows!");
     SteamAPI_WriteMiniDump(except_code, except_info, build_id);
 }
 
