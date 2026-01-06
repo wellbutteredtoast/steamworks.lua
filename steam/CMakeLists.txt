@@ -18,7 +18,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Few options, we don't need many for this!
 option(PEDANTIC_COMPILE "Enables the highest level of compiler warnings." OFF)
-option(WARNS_ARE_ERRORS "Enables special flags that treat all compiler warnings as errors." OFF)
 
 # Path to Steamworks SDK, we NEED this!
 set(STEAMWORKS_PATH "" CACHE PATH "Path to the Steamworks SDK")
@@ -45,6 +44,15 @@ add_library(steamlua SHARED
     ${SL_SOURCES}
     ${SL_HEADERS}
 )
+
+if(PEDANTIC_COMPILE)
+    message(WARNING "Enabling pedantic compilation and /WX | -Werror may render the project uncompilable!")
+    if(MSVC)
+        target_compile_options(steamlua PRIVATE /W4)
+    else()
+        target_compile_options(steamlua PRIVATE -Wall -Wextra -Wpedantic)
+    endif()
+endif()
 
 # Automagically fetching the steamapi library based on OS
 if(WIN32)
