@@ -14,7 +14,7 @@ EXPORT void sl_ActivateGameOverlayInviteDialog() {
     STUB_RETURN(void, "Not implemented yet! (sl_ActivateGameOverlayInviteDialog)", nullptr);
 }
 
-EXPORT void sl_ActivateGameOverlayToStore(unsigned int app_id, unsigned int overlay_store_flag) {
+EXPORT void sl_ActivateGameOverlayToStore(unsigned int app_id, unsigned int overlay_flag) {
     STUB_RETURN(void, "Not implemented yet! (sl_ActivateGameOverlayToStore)", nullptr);
 }
 
