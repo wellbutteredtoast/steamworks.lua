@@ -21,7 +21,7 @@ steamworks.lua is a binding, not an attempt at reimplementation.
 
 ```
 steamworks.lua/
-├─ steam/         # C wrapper over Steamworks SDK
+├─ steam/         # C / C++ wrapper over Steamworks SDK
 ├─ lua/           # Lua bindings and public APIs
 ├─ examples/      # Minimal working examples
 ├─ docs/          # Detailed API documentation

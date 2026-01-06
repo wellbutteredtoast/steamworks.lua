@@ -5,7 +5,7 @@ project(steamlua
     LANGUAGES C CXX
 )
 
-# Standard setup -- C standard, no gnu extensions, export compile commands
+# Standard setup -- ISO standards, no gnu extensions, export compile commands
 set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)

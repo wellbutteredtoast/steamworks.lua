@@ -15,14 +15,6 @@
 
 ]]
 
-local steam = {}
-local ffi = require("ffi")
-
-ffi.cdef[[
-    bool sl_init();
-    void sl_shutdown();
-    bool sl_restart_app_if_necessary(unsigned int app_id);
-    void sl_run_callbacks();
-]]
-
-return steam
+require("achievements")
+require("steamapps")
+require("core")
