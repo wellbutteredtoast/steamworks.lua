@@ -30,8 +30,7 @@ end
 
 function achievement.ResetAllStats(achievements_too)
     if type(achievements_too) ~= "boolean" then
-        print("Expected boolean, got " .. type(achievements_too))
-        return nil
+        error("Variable 'achievements_too' needs to be a boolean, not " .. type(achievement), 2)
     end
 
     return lib.sl_ResetAllStats(achievements_too)
