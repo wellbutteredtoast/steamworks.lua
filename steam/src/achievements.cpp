@@ -4,11 +4,17 @@
 
 extern "C" {
 
-// The user_id should not change during runtime. That's... really bad.
-static CSteamID user_id = SteamUser()->GetSteamID();
+const CSteamID &GetUserID() {
+    if (!SteamAPI_Init()) {
+        return;
+    }
+
+    static const CSteamID user_id = SteamUser()->GetSteamID();
+    return user_id;
+}
 
 EXPORT bool sl_RequestUserStats() {
-    return SteamUserStats()->RequestUserStats(user_id);
+    return SteamUserStats()->RequestUserStats(GetUserID());
 }
 
 // Note: achievements_too defaults to false to prevent accidental resets of achievements.

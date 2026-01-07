@@ -6,7 +6,8 @@
 #include "export.hpp"
 #include "version.hpp"
 #include "stub.hpp"
-#include "steam/steam_api.h"
+#include "steam_status.hpp"
+#include <steam/steam_api.h>
 #include <iostream>
 
 extern "C" {
@@ -23,7 +24,13 @@ EXPORT const char *sl_GetVersion() {
 
 // Initializes the SteamAPI for use.
 EXPORT bool sl_Init() {
-    return SteamAPI_Init();
+    if (SteamAPI_Init()) {
+        gSteamInitalized = true;
+    } else {
+        gSteamInitalized = false;
+    }
+
+    return gSteamInitalized;
 }
 
 // Shuts down the SteamAPI.
@@ -38,6 +45,10 @@ EXPORT bool sl_RestartAppIfNecessary(unsigned int app_id) {
 
 // Handles Steam callbacks: seek out Steamworks documentation for more info.
 EXPORT void sl_run_callbacks() {
+    if (!gSteamInitalized) {
+
+    }
+    
     SteamAPI_RunCallbacks();
 }
 
