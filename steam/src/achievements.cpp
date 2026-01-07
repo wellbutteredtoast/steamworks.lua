@@ -2,16 +2,15 @@
 #include "steam/steam_api.h"
 #include <iostream>
 
-extern "C" {
-
-const CSteamID &GetUserID() {
+CSteamID GetUserID() {
     if (!SteamAPI_Init()) {
-        return;
+        return CSteamID();
     }
 
-    static const CSteamID user_id = SteamUser()->GetSteamID();
-    return user_id;
+    return SteamUser()->GetSteamID();
 }
+
+extern "C" {
 
 EXPORT bool sl_RequestUserStats() {
     return SteamUserStats()->RequestUserStats(GetUserID());
