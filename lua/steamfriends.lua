@@ -23,6 +23,8 @@ ffi.cdef[[
     bool sl_CloseClanChatWindowInSteam(unsigned long long steam_id_clan_chat);
     int sl_GetClanCount();
     int sl_GetCoplayFriendCount();
+    int sl_GetFriendsGroupCount();
+    const char *sl_GetPersonaName();
 ]]
 
 local lib = ffi.load("steamlua")
@@ -88,5 +90,12 @@ function friends.GetCoplayFriendCount()
     return lib.sl_GetCoplayFriendCount()
 end
 
+function friends.GetFriendsGroupCount()
+    return lib.sl_GetFriendsGroupCount()
+end
+
+function friends.GetPersonaName()
+    return ffi.string(lib.sl_GetPersonaName())
+end
 
 return friends
