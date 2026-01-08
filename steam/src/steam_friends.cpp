@@ -62,6 +62,58 @@ EXPORT int sl_GetCoplayFriendCount() {
 // -> int GetFriendCoplayTime( CSteamID steamIDFriend );
 // -> int GetFriendCount( int iFriendFlags );
 // -> int GetFriendCountFromSource( CSteamID steamIDSource );
+// -> CSteamID GetFriendFromSourceByIndex( CSteamID steamIDSource, int iFriend );
+// -> bool GetFriendGamePlayed( CSteamID steamIDFriend, FriendGameInfo_t *pFriendGameInfo );
+// -> int GetFriendMessage( CSteamID steamIDFriend, int iMessageID, void *pvData, int cubData, EChatEntryType *peChatEntryType );
+// -> const char * GetFriendPersonaName( CSteamID steamIDFriend );
+// -> int GetFriendPersonaNameHistory( CSteamID steamIDFriend, int iPersonaName );
+// -> EPersonaState GetFriendPersonaState( CSteamID steamIDFriend );
+// -> EFriendRelationship GetFriendRelationship( CSteamID steamIDFriend );
+// -> const char * GetFriendRichPresence( CSteamID steamIDFriend, const char *pchKey );
+// -> const char * GetFriendRichPresenceKeyByIndex( CSteamID steamIDFriend, int iKey );
+// -> int GetFriendRichPresenceKeyCount( CSteamID steamIDFriend );
 
+EXPORT int sl_GetFriendsGroupCount() {
+    return SteamFriends()->GetFriendsGroupCount();
+}
+
+// -> FriendsGroupID_t GetFriendsGroupIDByIndex( int iFG );
+// -> int GetFriendsGroupMembersCount( FriendsGroupID_t friendsGroupID );
+// -> void GetFriendsGroupMembersList( FriendsGroupID_t friendsGroupID, CSteamID *pOutSteamIDMembers, int nMembersCount );
+// -> const char * GetFriendsGroupName( FriendsGroupID_t friendsGroupID );
+// -> int GetFriendSteamLevel( CSteamID steamIDFriend );
+// -> int GetLargeFriendAvatar( CSteamID steamIDFriend );
+// -> int GetMediumFriendAvatar( CSteamID steamIDFriend );
+
+EXPORT const char *sl_GetPersonaName() {
+    return SteamFriends()->GetPersonaName();
+}
+
+// -> EPersonaState GetPersonaState();
+// -> const char * GetPlayerNickname( CSteamID steamIDPlayer );
+// -> int GetSmallFriendAvatar( CSteamID steamIDFriend );
+// -> bool HasFriend( CSteamID steamIDFriend, int iFriendFlags );
+// -> bool InviteUserToGame( CSteamID steamIDFriend, const char *pchConnectString );
+// -> bool IsClanChatAdmin( CSteamID steamIDClanChat, CSteamID steamIDUser );
+// -> bool IsClanPublic( CSteamID steamIDClan );
+// -> bool IsClanOfficialGameGroup( CSteamID steamIDClan );
+// -> bool IsClanChatWindowOpenInSteam( CSteamID steamIDClanChat );
+// -> SteamAPICall_t IsFollowing( CSteamID steamID );
+// -> SteamAPICall_t JoinClanChatRoom( CSteamID steamIDClan );
+// -> bool LeaveClanChatRoom( CSteamID steamIDClan );
+// -> bool OpenClanChatWindowInSteam( CSteamID steamIDClanChat );
+// -> bool ReplyToFriendMessage( CSteamID steamIDFriend, const char *pchMsgToSend );
+// -> SteamAPICall_t RequestClanOfficerList( CSteamID steamIDClan );
+// -> void RequestFriendRichPresence( CSteamID steamIDFriend );
+// -> bool RequestUserInformation( CSteamID steamIDUser, bool bRequireNameOnly );
+// -> bool SendClanChatMessage( CSteamID steamIDClanChat, const char *pchText );
+// -> void SetInGameVoiceSpeaking( CSteamID steamIDUser, bool bSpeaking );
+// -> bool SetListenForFriendsMessages( bool bInterceptEnabled );
+// -> void SetPlayedWith( CSteamID steamIDUserPlayedWith );
+// -> bool SetRichPresence( const char *pchKey, const char *pchValue );
+// -> SteamAPICall_t RequestEquippedProfileItems( CSteamID steamID);
+// -> bool BHasEquippedProfileItem( CSteamID steamID, ECommunityProfileItemType itemType);
+// -> bool GetProfileItemPropertyString( CSteamID steamID, ECommunityProfileItemType itemType, ECommunityProfileItemProperty prop);
+// -> bool GetProfileItemPropertyUint( CSteamID steamID, ECommunityProfileItemType itemType, ECommunityProfileItemProperty prop);
 
 } // extern "C"
