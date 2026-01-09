@@ -35,13 +35,87 @@ ffi.cdef[[
 local lib = ffi.load("steamlua")
 
 function steamapps.IsAppInstalled(app_id)
-    local installed = ffi.new("bool[1]")
+    if type(app_id) ~= "number" then
+        error("app_id must be a number", 2)
+    end
+
     local result = lib.sl_IsAppInstalled(app_id)
     return result
 end
 
 function steamapps.IsSubscribed()
     local result = lib.sl_IsSubscribed()
+    return result
+end
+
+function steamapps.IsSubscribedApp(app_id)
+    if type(app_id) ~= "number" then
+        error("app_id must be a number", 2)
+    end
+
+    local result = lib.sl_IsSubscribedApp(app_id)
+    return result
+end
+
+function steamapps.IsDLCInstalled(app_id)
+    if type(app_id) ~= "number" then
+        error("app_id must be a number", 2)
+    end
+
+    local result = lib.sl_IsDLCInstalled(app_id)
+    return result
+end
+
+function steamapps.IsLowViolence()
+    local result = lib.sl_IsLowViolence()
+    return result
+end
+
+function steamapps.IsSubscribedFromFamilySharing()
+    local result = lib.sl_IsSubscribedFromFamilySharing()
+    return result
+end
+
+function steamapps.IsSubscribedFromFreeWeekend()
+    local result = lib.sl_IsSubscribedFromFreeWeekend()
+    return result
+end
+
+function steamapps.IsTimedTrial(seconds_allowed, seconds_played)
+    if type(seconds_allowed) ~= "number" then
+        error("seconds_allowed must be a number", 2)
+    end
+
+    if type(seconds_played) ~= "number" then
+        error("seconds_played must be a number", 2)
+    end
+
+    local result = lib.sl_IsTimedTrial(seconds_allowed, seconds_played)
+    return result
+end
+
+function steamapps.IsVACBanned()
+    local result = lib.sl_IsVACBanned()
+    return result
+end
+
+function steamapps.GetAppBuildId()
+    local result = lib.sl_GetAppBuildId()
+    return result
+end
+
+function steamapps.GetAppOwner()
+    local result = lib.sl_GetAppOwner()
+    return result
+end
+
+-- NOTE: this is untested!
+function steamapps.SetActiveBeta(beta_name)
+    if type(beta_name) ~= "string" then
+        error("beta_name must be a string", 2)
+    end
+
+    local result = lib.sl_SetActiveBeta(beta_name)
     return result
 end
 
