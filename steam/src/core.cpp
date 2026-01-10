@@ -23,6 +23,11 @@ EXPORT const char *sl_GetVersion() {
     return LUASTEAM_VERSION;
 }
 
+// Helper: Check the SteamAPI status
+EXPORT bool sl_GetSteamStatus() {
+    return gSteamInitalized;
+}
+
 // Initializes the SteamAPI for use.
 EXPORT bool sl_Init() {
     if (SteamAPI_Init()) {
@@ -45,7 +50,7 @@ EXPORT bool sl_RestartAppIfNecessary(unsigned int app_id) {
 }
 
 // Handles Steam callbacks: seek out Steamworks documentation for more info.
-EXPORT void sl_run_callbacks() {
+EXPORT void sl_RunCallbacks() {
     if (!gSteamInitalized) {
         abort();
     }
